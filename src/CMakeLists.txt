@@ -83,9 +83,11 @@ IF (WANT_STATIC)
             ${wildmidi_library_HDRS}
             )
 
-    TARGET_LINK_LIBRARIES(libwildmidi_static
-            ${M_LIBRARY}
-            )
+    IF (M_LIBRARY_FOUND)
+        TARGET_LINK_LIBRARIES(libwildmidi_static
+                ${M_LIBRARY}
+                )
+    ENDIF (M_LIBRARY_FOUND)
 
     SET_TARGET_PROPERTIES(libwildmidi_static PROPERTIES
             OUTPUT_NAME ${LIBRARY_STATIC_NAME} CLEAN_DIRECT_OUTPUT 1
@@ -100,9 +102,11 @@ IF (BUILD_SHARED_LIBS)
             ${wildmidi_library_HDRS}
             )
 
-    TARGET_LINK_LIBRARIES(libwildmidi_dynamic
-            ${M_LIBRARY}
-            )
+    IF (M_LIBRARY_FOUND)
+        TARGET_LINK_LIBRARIES(libwildmidi_dynamic
+                ${M_LIBRARY}
+                )
+    ENDIF (M_LIBRARY_FOUND)
 
     SET_TARGET_PROPERTIES(libwildmidi_dynamic PROPERTIES
             SOVERSION ${SOVERSION}
